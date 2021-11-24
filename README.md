@@ -3,6 +3,7 @@ This is a mod for the Java version of Minecraft. It enables the evolution of Min
 To accomplish this evolution, we modified the color, reproduction, and life cycle of sheep, as well as the hunting behavior and the reproduction of wolves.
 //change to third person. //provide the tutorial link for 69 videos.
 ![run_build.gradle](images/Example.png)
+
 ## Using the Mod
 Information about how to just download and use the mod will be here
 (TODO: have a guide just for people that want to use the mod, not edit it, and try to make that as easy as possible)
@@ -24,6 +25,7 @@ When produce an offspring, we generate the color of small sheep based on the ave
 ### Competition
 We want to imitate the scenario that the more the skin of sheep similar to the environment, the more likely the wolves can detect the sheep, and then eat them.
 Therefore, We manipulate the chance of a wolf successfully attacks a sheep based on the similarity of the sheep skin and environment. Also, in order to simulate the competition between wolves, we let wolves die if it failed to attack sheep several (still adjusting) times. 
+
 (TODO: Explain how wolves are more likely to target and kill sheep that stand out from their surroundings, leading to differential survival of sheep based on their wool color)
 
 ## Editing the Mod
@@ -92,7 +94,7 @@ The `SheepLifeCycleMixin` class has the functions:
    sheep and the surrounding color,
 
 3. kills the sheep based on this difference.(not using now because the wolves are killing sheep now, but you can still call it)
- 
+
 ### DyeUtils
 To quantify the difference between a sheep's wool color and the surrounding environment, we created a color ring, defined in `DyeUtils`, as shown below:
 ![color_ring](images/color_ring.png)
@@ -101,6 +103,7 @@ To quantify the difference between a sheep's wool color and the surrounding envi
 
 ### attackSheepGoal
 (TODO: Expand on this to explain the goal of this change and how it works)
+
 By modifying the meleeAttackGoal in wolf Class, I created the attackSheepGoal. Inside this goal, I modified the attack() function in meleeAttackGoal to kill the sheep by the difference between sheep and surrounding color.
 The attack() will detect if the target is a sheep, then kill the sheep by chance based on the difference. What's more, if the wolf failed to attack the sheep more than 10 times, it will be dead.
 (more details see the comments of the code).
@@ -130,7 +133,4 @@ similar algorithm as we did in producing sheep is that wolf 1,need to be tamed t
 
 ### AngerTimeMixin
 This mixin is not working yet. The aim for creating this mixin is that we want the wolves be angry all the time, so that it can search and always attack sheep. 
-
-
-
 
